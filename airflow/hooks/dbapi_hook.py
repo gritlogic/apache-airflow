@@ -66,8 +66,11 @@ class DbApiHook(BaseHook):
         host = conn.host
         if conn.port is not None:
             host += ':{port}'.format(port=conn.port)
-        return '{conn.conn_type}://{login}{host}/{conn.schema}'.format(
-            conn=conn, login=login, host=host)
+        schema = ''
+        if conn.schema is not None:
+            schema += '/{schema}'.format(schema=conn.schema)
+        return '{conn.conn_type}://{login}{host}{schema}'.format(
+            conn=conn, login=login, host=host, schema=schema)
 
     def get_sqlalchemy_engine(self, engine_kwargs=None):
         if engine_kwargs is None:
