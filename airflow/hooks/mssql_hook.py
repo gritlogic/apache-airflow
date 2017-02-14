@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import pymssql
-
 from airflow.hooks.dbapi_hook import DbApiHook
 
 
@@ -31,13 +29,10 @@ class MsSqlHook(DbApiHook):
         Returns a mssql connection object
         """
         conn = self.get_connection(self.mssql_conn_id)
-        conn = pymssql.connect(
-            server=conn.host,
-            user=conn.login,
-            password=conn.password,
-            database=conn.schema,
-            port=conn.port)
-        return conn
+        engine = self.get_sqlalchemy_engine()
+        conn = engine.connect()
+        return conn.connection # RETURN DBAPI connection, not SqlAlchemy Connection
 
     def set_autocommit(self, conn, autocommit):
-        conn.autocommit(autocommit)
+        conn.autocommit = autocommit # DBAPI way
+        #conn.execution_options(autocommit=autocommit) # SqlAlchemy way
