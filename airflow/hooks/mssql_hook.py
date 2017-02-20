@@ -31,7 +31,8 @@ class MsSqlHook(DbApiHook):
         conn = self.get_connection(self.mssql_conn_id)
         engine = self.get_sqlalchemy_engine()
         conn = engine.connect()
-        return conn.connection # RETURN DBAPI connection, not SqlAlchemy Connection
+        return engine
+        #return conn.connection # RETURN DBAPI connection, not SqlAlchemy Connection
 
     def set_autocommit(self, conn, autocommit):
         conn.autocommit = autocommit # DBAPI way
