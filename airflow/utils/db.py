@@ -161,6 +161,10 @@ def initdb():
             host='localhost', port=1433))
     merge_conn(
         Connection(
+            conn_id='ctds_default', conn_type='ctds',
+            host='localhost', port=1433))
+    merge_conn(
+        Connection(
             conn_id='vertica_default', conn_type='vertica',
             host='localhost', port=5433))
     merge_conn(

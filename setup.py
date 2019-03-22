@@ -206,6 +206,7 @@ kubernetes = ['kubernetes>=3.0.0',
 ldap = ['ldap3>=2.5.1']
 mssql = ['pymssql>=2.1.1']
 mysql = ['mysqlclient>=1.3.6,<1.4']
+ctds = ['ctds']
 oracle = ['cx_Oracle>=5.1.2']
 password = [
     'bcrypt>=2.0.0',
@@ -231,7 +232,7 @@ webhdfs = ['hdfs[dataframe,avro,kerberos]>=2.0.4']
 winrm = ['pywinrm==0.2.2']
 zendesk = ['zdesk']
 
-all_dbs = postgres + mysql + hive + mssql + hdfs + vertica + cloudant + druid + pinot \
+all_dbs = postgres + mysql + hive + mssql + ctds + hdfs + vertica + cloudant + druid + pinot \
     + cassandra + mongo
 
 devel = [
@@ -366,6 +367,7 @@ def do_setup():
             'ldap': ldap,
             'mongo': mongo,
             'mssql': mssql,
+	    'ctds': ctds,
             'mysql': mysql,
             'oracle': oracle,
             'password': password,

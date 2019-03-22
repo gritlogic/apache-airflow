@@ -88,6 +88,7 @@ class Connection(Base, LoggingMixin):
         ('ssh', 'SSH',),
         ('cloudant', 'IBM Cloudant',),
         ('mssql', 'Microsoft SQL Server'),
+	('ctds', 'Microsoft SQL Server (ctds library)'),
         ('mesos_framework-id', 'Mesos Framework ID'),
         ('jira', 'JIRA',),
         ('redis', 'Redis',),
@@ -224,6 +225,9 @@ class Connection(Base, LoggingMixin):
             return JdbcHook(jdbc_conn_id=self.conn_id)
         elif self.conn_type == 'mssql':
             from airflow.hooks.mssql_hook import MsSqlHook
+            return MsSqlHook(mssql_conn_id=self.conn_id)
+        elif self.conn_type == 'ctds':
+            from airflow.hooks.ctds_hook import CtdsHook
             return MsSqlHook(mssql_conn_id=self.conn_id)
         elif self.conn_type == 'oracle':
             from airflow.hooks.oracle_hook import OracleHook
