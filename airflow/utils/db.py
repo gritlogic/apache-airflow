@@ -286,6 +286,10 @@ def initdb():
         Connection(
             conn_id='dingding_default', conn_type='http',
             host='', password=''))
+    merge_conn(
+        Connection(
+            conn_id='opsgenie_default', conn_type='http',
+            host='', password=''))
 
     dagbag = models.DagBag()
     # Save individual DAGs in the ORM
