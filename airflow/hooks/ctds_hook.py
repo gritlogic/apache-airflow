@@ -47,4 +47,3 @@ class CtdsHook(DbApiHook):
                         if type(rows[i][j]) == 'str':
                             rows[i][j] = ctds.SqlVarChar(rows[i][j].encode('latin-1'))
                 c.bulk_insert(table, iter(rows))
-
