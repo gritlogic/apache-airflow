@@ -17,7 +17,7 @@ import ctds
 import logging
 from airflow.hooks.dbapi_hook import DbApiHook
 
-class CTDSHook(DbApiHook):
+class CtdsHook(DbApiHook):
     '''
     Based off of Zillow's ctds library. Allows for bulk
     load operations against Microsoft databases.
