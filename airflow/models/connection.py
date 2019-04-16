@@ -89,7 +89,7 @@ class Connection(Base, LoggingMixin):
         ('ssh', 'SSH',),
         ('cloudant', 'IBM Cloudant',),
         ('mssql', 'Microsoft SQL Server'),
-	('ctds', 'Microsoft SQL Server (ctds library)'),
+        ('ctds', 'Microsoft SQL Server (ctds library)'),
         ('mesos_framework-id', 'Mesos Framework ID'),
         ('jira', 'JIRA',),
         ('redis', 'Redis',),
