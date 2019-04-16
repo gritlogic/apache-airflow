@@ -230,7 +230,7 @@ class Connection(Base, LoggingMixin):
             return MsSqlHook(mssql_conn_id=self.conn_id)
         elif self.conn_type == 'ctds':
             from airflow.hooks.ctds_hook import CtdsHook
-            return MsSqlHook(mssql_conn_id=self.conn_id)
+            return CtdsHook(mssql_conn_id=self.conn_id)
         elif self.conn_type == 'oracle':
             from airflow.hooks.oracle_hook import OracleHook
             return OracleHook(oracle_conn_id=self.conn_id)

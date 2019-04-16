@@ -14,7 +14,7 @@
 
 import logging
 
-from airflow.hooks.ctds_hook import CTDSHook
+from airflow.hooks.ctds_hook import CtdsHook
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
 
@@ -46,6 +46,6 @@ class MSSQLBulkLoadOperator(BaseOperator):
 
     def execute(self, context):
         logging.info('Executing: ' + str(self.sql))
-        hook = CTDSHook(ctds_conn_id=self.ctds_conn_id)
+        hook = CtdsHook(ctds_conn_id=self.ctds_conn_id)
         hook.run(self.sql, autocommit=self.autocommit, parameters=self.parameters)
 
