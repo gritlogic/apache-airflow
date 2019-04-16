@@ -21,8 +21,8 @@ from airflow.utils.decorators import apply_defaults
 
 class MSSQLBulkLoadOperator(BaseOperator):
     """
-	Uses Zillow's CTDS library to execute bulk load operations
-	against a Microsoft database.
+    Uses Zillow's CTDS library to execute bulk load operations
+    against a Microsoft database.
     :param ctds_conn_id: reference to a specific ctds database
     :type ctds_conn_id: string
     :param sql: the sql code to be executed
@@ -38,7 +38,7 @@ class MSSQLBulkLoadOperator(BaseOperator):
     def __init__(
             self, sql, ctds_conn_id='ctds_default', parameters=None,
             autocommit=False, *args, **kwargs):
-        super(MSSQLBulkOperator, self).__init__(*args, **kwargs)
+        super(MSSQLBulkLoadOperator, self).__init__(*args, **kwargs)
         self.ctds_conn_id = ctds_conn_id
         self.sql = sql
         self.parameters = parameters
