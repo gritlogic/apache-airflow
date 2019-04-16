@@ -38,7 +38,7 @@ class MSSQLBulkLoadOperator(BaseOperator):
     def __init__(
             self, sql, ctds_conn_id='ctds_default', parameters=None,
             autocommit=False, *args, **kwargs):
-        super(CTDSBulkOperator, self).__init__(*args, **kwargs)
+        super(MSSQLBulkOperator, self).__init__(*args, **kwargs)
         self.ctds_conn_id = ctds_conn_id
         self.sql = sql
         self.parameters = parameters
